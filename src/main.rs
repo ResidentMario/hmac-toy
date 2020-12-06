@@ -1,6 +1,7 @@
-use crypto_learn::hmac_encode;
+use hmac_toy::{hmac_encode, IntegrityVerifiedPackage};
 
 fn main() {
-    let pkg = hmac_encode("Hello World", "Sekrit");
+    let pkg: IntegrityVerifiedPackage = hmac_encode("Hello World", "Sekrit");
     println!("{:?}", pkg.msg);
+    println!("{:?}", pkg.verify("Sekrit"));
 }
